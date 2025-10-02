@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Patient Education Generator
 
-## Getting Started
+A Next.js app that generates patient-friendly condition guides with citations. Fully supports English/Arabic, RTL/LTR, and accessible UI.
 
-First, run the development server:
+Features
 
-```bash
+Form: condition, language (en/ar), reading level, sources (URLs)
+
+Results: titled sections with citations and simple provenance
+
+Internationalization: locale routes (/en, /ar) with RTL handling
+
+UX states: loading, empty, and error
+
+Modern stack: Next.js 15, React 19, Tailwind CSS v4, TypeScript
+
+Tech
+
+Next.js 15 / React 19
+
+TypeScript
+
+Tailwind CSS v4
+
+next-intl for i18n
+
+Lightweight UI primitives
+
+Prerequisites
+
+Node.js ≥ 20
+
+Getting Started
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# open http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Scripts
+{
+  "dev": "next dev --turbopack",
+  "build": "next build --turbopack",
+  "start": "next start",
+  "lint": "eslint"
+}
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Internationalization & RTL
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Middleware redirects / to /en.
 
-## Learn More
+Visit /ar for Arabic (RTL).
 
-To learn more about Next.js, take a look at the following resources:
+lang and dir are set from the active locale in the app layout.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Translation messages live in src/messages/en.json and src/messages/ar.json.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+API (Mock)
 
-## Deploy on Vercel
+POST /api/generate (route handler inside the app)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Request
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+{
+  "condition": "Hypertension",
+  "language": "en",
+  "readingLevel": "basic",
+  "sources": ["https://who.int/..."]
+}
+
+
+Response
+
+{
+  "title": "Hypertension — Patient Guide",
+  "sections": [
+    { "heading": "What is it?", "text": "...", "citations": ["https://who.int/..."] },
+    { "heading": "How to manage", "text": "...", "citations": ["https://cdc.gov/..."] }
+  ],
+  "lineage": { "createdAt": "2025-01-01T00:00:00Z", "sourcesCount": 2 }
+}
+
+Project Structure (high level)
+src/
+  app/
+    [locale]/            # /en, /ar
+      page.tsx
+      layout.tsx
+      route.ts           # mock API (POST /api/generate)
+    middleware.ts
+    globals.css
+  components/
+    GeneratorForm.tsx
+    GeneratorClient.tsx
+    ui/
+  lib/
+    i18n.ts              # locales, RTL flag, message loading
+  messages/
+    en.json
+    ar.json
+
+Deployment
+
+Recommended: Vercel (Next.js preset).
+
+No env vars needed for the mock.
+
+License
+
+MIT
