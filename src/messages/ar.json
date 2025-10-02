@@ -1,0 +1,28 @@
+{
+  "title": " مواد توعوية للمرضى",
+  "form": {
+    "conditionLabel": "الحالة الطبية",
+    "conditionPlaceholder": "مثال: ارتفاع ضغط الدم، سكري النوع الثاني",
+    "readingLabel": "مستوى القراءة",
+    "readingBasic": "أساسي",
+    "readingIntermediate": "متوسط",
+    "readingAdvanced": "متقدم",
+    "sourcesLabel": "مصادر موثوقة (روابط)",
+    "addSource": "إضافة مصدر",
+    "submit": "توليد المادة التوعوية"
+  },
+  "results": {
+    "emptyTitle": "لا يوجد محتوى بعد",
+    "emptySubtitle": "املأ النموذج لتوليد مادة توعوية للمريض.",
+    "loading": "جاري التوليد…",
+    "errorTitle": "حدث خطأ",
+    "retry": "إعادة المحاولة",
+    "provenance": "إسناد",
+    "sourcesCount": "{{count}} مصدر",
+    "citations": "المراجع"
+  },
+  "shell": {
+    "langEN": "الإنجليزية",
+    "langAR": "العربية"
+  }
+}

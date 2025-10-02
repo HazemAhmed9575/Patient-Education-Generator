@@ -1,0 +1,28 @@
+{
+  "title": "Patient Education Generator",
+  "form": {
+    "conditionLabel": "Medical Condition",
+    "conditionPlaceholder": "e.g., Hypertension, Type 2 Diabetes",
+    "readingLabel": "Reading level",
+    "readingBasic": "Basic",
+    "readingIntermediate": "Intermediate",
+    "readingAdvanced": "Advanced",
+    "sourcesLabel": "Trusted Sources (URLs)",
+    "addSource": "Add Source",
+    "submit": "Generate Education Material"
+  },
+  "results": {
+    "emptyTitle": "No content generated yet",
+    "emptySubtitle": "Fill out the form to generate patient education materials.",
+    "loading": "Generating content…",
+    "errorTitle": "Something went wrong",
+    "retry": "Try again",
+    "provenance": "Provenance",
+    "sourcesCount": "{{count}} sources",
+    "citations": "Citations"
+  },
+  "shell": {
+    "langEN": "English",
+    "langAR": "Arabic"
+  }
+}
